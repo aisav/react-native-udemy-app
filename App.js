@@ -16,16 +16,13 @@ export default class App extends React.Component {
 
     render() {
         return (
-            // Try setting `flexDirection` to `column`.
-            <View style={{flex: 1, flexDirection: 'column'}}>
-                <View style={{flex: 3, backgroundColor: 'red'}}/>
-                <View style={{flex: 1, backgroundColor: 'blue'}}/>
-                <View style={{flex: 2, flexDirection: 'row'}}>
-                    <View style={{flex: 7, backgroundColor: 'orange'}}/>
-                    <View style={{flex: 1}}/>
-                    <View style={{flex: 7, backgroundColor: 'orange'}}/>
-                    <View style={{flex: 1}}/>
-                </View>
+            <View style={styles.container}>
+                <TextInput
+                    style={{width: 300, borderColor: 'black', borderWidth: 1}}
+                    value={this.state.placeName}
+                    placeholder="Input any text"
+                    onChangeText={this.placeNameChangedHandler}>
+                </TextInput>
             </View>
         );
     }
@@ -33,9 +30,11 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        // flex: 1, //by default
+        // flexDirection: 'column', //by default
+        padding: 80,
         backgroundColor: '#fff',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'flex-start', //children are starting from top
     },
 });
