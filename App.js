@@ -36,16 +36,16 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flex: 1,                      //occupies full available height
         padding: 80,
         backgroundColor: '#fff',
-        justifyContent: 'flex-start', //children are starting from  the top
+        justifyContent: 'flex-start', //Horizontal, children(this time one View) are starting from  the left of layout
     },
     inputContainer: {
-        flexDirection: 'row',         // flexDirection: 'column', //by default
-        width: '100%',
-        justifyContent: 'space-between', //space between the children,
-        alignItems: 'center',
+        flexDirection: 'row',         // dividing layout horizontal parts: 'column', //by default
+        width: '100%',                // by width, flex is by height
+        justifyContent: 'space-between', //Horizontal, space between the children,
+        alignItems: 'center',        //Vertical, each children will start from
     },
     placeInput: {
         width: '70%',
