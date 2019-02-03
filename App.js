@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View, TextInput} from 'react-native';
+import {StyleSheet, Text, View, TextInput, Button} from 'react-native';
 
 export default class App extends React.Component {
 
@@ -7,9 +7,9 @@ export default class App extends React.Component {
         placeName: ''
     }
 
-    placeNameChangedHandler = (val) => {
+    placeNameChangedHandler = (event) => {
         this.setState({
-            placeName: val
+            placeName: event
         })
 
     }
@@ -17,12 +17,18 @@ export default class App extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <TextInput
-                    style={{width: 300, borderColor: 'black', borderWidth: 1}}
-                    value={this.state.placeName}
-                    placeholder="Input any text"
-                    onChangeText={this.placeNameChangedHandler}>
-                </TextInput>
+                <View style={styles.inputContainer}>
+                    <TextInput
+                        style={styles.placeInput}
+                        value={this.state.placeName}
+                        placeholder="Input any text here"
+                        onChangeText={this.placeNameChangedHandler}>
+                    </TextInput>
+                    <Button
+                            title="Add"
+                            onPress={this.placeNameChangedHandler}
+                            style={styles.placeButton}/>
+                </View>
             </View>
         );
     }
@@ -30,11 +36,21 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        // flex: 1, //by default
-        // flexDirection: 'column', //by default
+        flex: 1,
         padding: 80,
         backgroundColor: '#fff',
+        justifyContent: 'flex-start', //children are starting from  the top
+    },
+    inputContainer: {
+        flexDirection: 'row',         // flexDirection: 'column', //by default
+        width: '100%',
+        justifyContent: 'space-between', //space between the children,
         alignItems: 'center',
-        justifyContent: 'flex-start', //children are starting from top
+    },
+    placeInput: {
+        width: '70%',
+    },
+    placeButton: {
+        width: '30%',
     },
 });
