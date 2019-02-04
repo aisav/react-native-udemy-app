@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {View} from 'react-native';
+import {ScrollView} from 'react-native';
 
 import ListItem from './ListItem';
 
@@ -12,7 +12,7 @@ const placeOutput = props => {
         </ListItem>
     });
 
-    return <View>{placesList}</View>
+    return <ScrollView>{placesList}</ScrollView>
 }
 
 
