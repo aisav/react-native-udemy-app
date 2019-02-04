@@ -8,7 +8,7 @@ const placeInput = props => {
     <View style={styles.inputContainer}>
         <TextInput
             style={styles.placeInput}
-            value={props.placeName}
+            name={props.placeName}
             placeholder="Input any text here"
             onChangeText={props.placeNameChangedHandler}>
         </TextInput>

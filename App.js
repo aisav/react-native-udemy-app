@@ -3,6 +3,7 @@ import {StyleSheet, Text, View, TextInput, Button} from 'react-native';
 
 import PlaceInput from './src/components/PlaceInput';
 import PlacesOutput from './src/components/PlacesOutput';
+import baby from './assets/baby.jpeg';
 
 
 export default class App extends React.Component {
@@ -36,7 +37,8 @@ export default class App extends React.Component {
             return {
                 places: prevState.places.concat( {
                     key: Math.random(),
-                    value: placeName}),
+                    name: placeName,
+                    image: baby,})
             }
         })
     }

@@ -9,7 +9,8 @@ const placeOutput = props => {
 
     return <FlatList data={props.places}
                      renderItem={(info) => (
-                         <ListItem placeName={info.item.value}
+                         <ListItem placeName={info.item.name}
+                                   placeImage={info.item.image}
                                    onItemPressed={() => props.onItemDeleted(info.item.key)}/>
                      )}>
     </FlatList>
