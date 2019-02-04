@@ -7,9 +7,16 @@ import PlacesOutput from './src/components/PlacesOutput';
 
 export default class App extends React.Component {
 
-    state = {
-        placeName: '',
-        places: [],
+    constructor() {
+
+        super();
+
+        this.state = {
+            placeName: "",
+            places: [],
+        }
+
+        this.itemDeletedHandler = this.itemDeletedHandler.bind(this)
     }
 
     placeNameChangedHandler = (event) => {
@@ -19,41 +26,54 @@ export default class App extends React.Component {
     }
 
     placeNameSubmitHandler = () => {
-        if (this.state.placeName.trim() === '') {
+        const { placeName } = this.state;
+
+        if (placeName.trim() === '') {
             return;
         }
 
         this.setState(prevState => {
             return {
-                places: prevState.places.concat(this.state.placeName),
+                places: prevState.places.concat(placeName),
                 placeName: ''
             }
         })
     }
 
+    itemDeletedHandler = (index) => {
+        this.setState(previosState => {
+                places: previosState.places.filter((place, i) => index !== i)
+            }
+        )
+    }
+
     render() {
+
+        const { placeName, places } = this.state;
+
         return (
             <View style={styles.container}>
                 <PlaceInput
-                    placeName={this.state.placeName}
+                    placeName={placeName}
                     placeNameChangedHandler={this.placeNameChangedHandler}
                     placeNameSubmitHandler={this.placeNameSubmitHandler}
                 />
 
-                {/*<View style={styles.listContainer}>{this.renderPlaces(places)}</View>*/}
-                <PlacesOutput places={this.state.places}/>
+                <PlacesOutput places={places}
+                              onItemDeleted={() => this.itemDeletedHandler()}/>
             </View>
         );
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,                      //occupies full available height
-        padding: 80,
-        backgroundColor: '#fff',
-        justifyContent: 'flex-start', //Horizontal, children(this time one View) are starting from  the left of layout
-    },
+const
+    styles = StyleSheet.create({
+        container: {
+            flex: 1,                      //occupies full available height
+            padding: 80,
+            backgroundColor: '#fff',
+            justifyContent: 'flex-start', //Horizontal, children(this time one View) are starting from  the left of layout
+        },
 
 
-});
+    });
