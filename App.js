@@ -56,7 +56,7 @@ export default class App extends React.Component {
         )
     }
 
-    itemStelectedHandler = (key) => {
+    itemSelectedHandler = (key) => {
         this.setState(prevState => {
             return {
                 selectedPlace: prevState.places.find((place) => {
@@ -96,7 +96,7 @@ export default class App extends React.Component {
 
 
                 <PlacesOutput places={this.state.places}
-                              onItemSelecteted={this.itemStelectedHandler}
+                              onItemSelecteted={this.itemSelectedHandler}
                               keyExtractor={this._keyExtractor}/>
             </View>
         );
