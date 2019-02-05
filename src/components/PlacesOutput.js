@@ -11,7 +11,7 @@ const placeOutput = props => {
                      renderItem={(info) => (
                          <ListItem placeName={info.item.name}
                                    placeImage={info.item.image}
-                                   onItemPressed={() => props.onItemDeleted(info.item.key)}/>
+                                   onItemPressed={() => props.onItemSelecteted(info.item.key)}/>
                      )}>
     </FlatList>
 }
